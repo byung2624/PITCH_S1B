@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Slider - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+  <script src="http://malsup.github.com/jquery.form.js"></script> 
+  <script src="js/jquery-ui-slider-pips.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/jquery-ui-slider-pips.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+	var likert = ["Completely Left", "", "", "Both Equally", "", "", "Completely Right"]
+	var $slider2 = $("#slider2").slider({ min: 1, max: 7 , value: 4, 
+		slide: function( event, ui ) {
+					$(this).prev().val(ui.value)
+				}
+		});
+		
+	// and then we can apply pips to it!
+	$slider2.slider("pips", { rest: "label", labels: likert});
+
+	
+  });
+  </script>
+</head>
+<body>
+ 
+ <form method='post' action='save_salience.php'>
+ 
+
+  
+  Rate the how mucn you'd spend:<br>
+  <input type='hidden' name='slider2'>
+  <div id="slider2" class="slider"></div><br>
+  
+ <input type='submit' name='submit' value='Verzend >'>
+ 
+ </form>
+ 
+ 
+ <form id="myForm" action="save_salience.php" method="post"> 
+	<div id="slider2"></div>
+	<br>
+    <input type="hidden" name="rangeValue" id="rangeValue" value="90 - 290">
+    <input type="submit" value="Submit Ratings" /> 
+</form>
+ 
+ <?php echo get_option('value_1'); ?>
+ 
+<div id="slider2"></div>
+ <div id="hiddenslider2"></div>
+
+<!--    <div data-role="main" class="ui-content">
+    <form method="post" action="demoform.asp">
+      <label for="points">Points:</label>
+      <input type="range" name="points" id="points" value="50" min="0" max="100">
+      <input type="submit" data-inline="true" value="Submit">
+    </form>
+  </div> -->
+ 
+ 
+ <TABLE width=20%><TR><td width=14% align=center><INPUT TYPE=RADIO NAME='valence' VALUE='1'></td><td width=14% align=center><INPUT TYPE=RADIO NAME='valence' VALUE='2'></td><td width=14% align=center><INPUT TYPE=RADIO NAME='valence' VALUE='3'></td><td width=14% align=center><INPUT TYPE=RADIO NAME='valence' VALUE='4'></td><td width=14% align=center><INPUT TYPE=RADIO NAME='valence' VALUE='5'></td><td width=14% align=center><INPUT TYPE=RADIO NAME='valence' VALUE='6'></td><td width=14% align=center><INPUT TYPE=RADIO NAME='valence' VALUE='7'></td></TR><TR><td align=center>Definitely Left</td><td align=center></td><td align=center></td><td align=center>Neither</td><td align=center></td><td align=center></td><td align=center>Definitely Right</td></TR></TABLE>
+ 
+</body>
+</html>
